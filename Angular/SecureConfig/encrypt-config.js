@@ -10,8 +10,8 @@ const key = CryptoJS.lib.WordArray.random(32); // 32 bytes key for AES-256
 const iv = CryptoJS.lib.WordArray.random(16);  // 16 bytes IV
 
 // Read the config file
-const localConfigPath = path.join(__dirname, 'src', 'assets', 'configuration', 'config.k8s.json');
-const hostConfigPath = path.join('/usr/share/nginx/html/assets/configuration/config.k8s.json');
+const localConfigPath = path.join(__dirname, 'src', 'assets', 'configuration', 'config.json');
+const hostConfigPath = path.join('/usr/share/nginx/html/assets/configuration/config.json');
 const configPath = configPathArg ? hostConfigPath : localConfigPath;
 const config = fs.readFileSync(configPath, 'utf8');
 
