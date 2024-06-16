@@ -10,7 +10,7 @@ WORKDIR /app
 ARG NPM_TOKEN
 
 # Copying necessary files
-COPY package.json .npmrc obfuscate.js ./
+COPY package.json obfuscate.js ./
 
 # Install Yarn and dependencies
 RUN npm install -g yarn --force
