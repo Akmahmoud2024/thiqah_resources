@@ -111,7 +111,7 @@ Many developers switch from using `environment.ts` to `config.json` for applicat
     }
     ```
 
-5. **Create `config.json`**
+4. **Create `config.json`**
    
    Place your configuration file at `../assets/configuration/config.json`.
    
@@ -124,10 +124,26 @@ Many developers switch from using `environment.ts` to `config.json` for applicat
 
    ```
 
-7. **Add `env.js` to Build Assets**
+5. **Add `env.js` to Build Assets**
+
    Ensure `env.js` is included in your build assets for environment-specific configurations.
 
-8. **Update `angular.json` for Production**
+6. **Add prestart command into `package.json`**
+
+   ```json
+   {
+      ...
+      "scripts": {
+       "ng": "ng",
+       "prestart": "node encrypt-config.js",
+       "start": "ng serve --open",
+       ...
+     },
+   ...
+   }
+   ```
+
+7. **Update `angular.json` for Production**
    
    Add necessary properties to your `angular.json` file to support the secure configuration in production.
 
