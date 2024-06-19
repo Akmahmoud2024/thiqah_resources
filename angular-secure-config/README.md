@@ -4,7 +4,7 @@ A description of your project.
 
 ## Links
 
-- [GitHub Repository](https://github.com/Akmahmoud2024/thiqah_resources)
+- [thiqah-angular-secure-config](https://www.npmjs.com/package/thiqah-angular-secure-config/access)
 - [Live Demo on StackBlitz](https://stackblitz.com/github/Akmahmoud2024/thiqah_resources)
 
 ## Installation
