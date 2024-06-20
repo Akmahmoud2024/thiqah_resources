@@ -244,8 +244,30 @@ Many developers switch from using `environment.ts` to `config.json` for applicat
    })
    export class AppModule {}
    ```
+0. **Update `main.ts`**
 
-   ## Usage
+   Initialize the app configuration handler before the resolving the application.
+
+   ```ts
+   import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+   import { AppModule } from './app/app.module';
+   import { enableProdMode } from '@angular/core';
+   import { ConfigService } from './app/core/services/config.service';
+   
+   const envConfigService = new ConfigService();
+   
+   envConfigService.init().then(() => {
+     if (envConfigService.getOne('production')) {
+       enableProdMode();
+     }
+     platformBrowserDynamic()
+       .bootstrapModule(AppModule)
+       .catch((err) => console.error(err));
+   });
+   ```
+
+## Usage
+ 
    ```ts
    import { Component } from '@angular/core';
    import { ConfigService } from './core/services/config.service';
@@ -266,7 +288,14 @@ Many developers switch from using `environment.ts` to `config.json` for applicat
      }
    }
    ```
- 
+## Run the application
+
+ ```sh
+ node encrypt-config.js && ng serve -o
+ ```
+ ```sh
+ npm start
+ ```
 
 ## Deployment
 
