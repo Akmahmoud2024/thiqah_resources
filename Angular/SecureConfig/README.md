@@ -2,7 +2,7 @@
 
 ## Overview
 
-`thiqah-secure-config` is a new npm package developed by our company to address a security vulnerability in Angular applications. This package ensures that sensitive configuration data in `config.json` is protected from being inspected or extracted via browser network tools or debugging features.
+`thiqah-angular-secure-config` is a new npm package developed to address a security vulnerability in Angular applications. This package ensures that sensitive configuration data in `config.json` is protected from being inspected or extracted via browser network tools or debugging features.
 
 ## Problem Statement
 
@@ -10,7 +10,7 @@ Many developers switch from `environment.ts` to `config.json` for application co
 
 ## Solution
 
-`thiqah-secure-config` resolves this issue by encrypting the `config.json` file before the application starts. Upon startup, the application decrypts the file in `main.ts` and stores the data in a static variable, ensuring the configuration remains secure.
+`thiqah-angular-secure-config` resolves this issue by encrypting the `config.json` file before the application starts. Upon startup, the application decrypts the file in `main.ts` and stores the data in a static variable, ensuring the configuration remains secure.
 
 ## Features
 
@@ -23,7 +23,7 @@ Many developers switch from `environment.ts` to `config.json` for application co
 
 ## Demo
 
-You can find a complete implementation at [Stackblatz - Angular Secure Config](https://stackblitz.com/edit/stackblitz-starters-yv8x5f)
+You can find a complete implementation at [Stackblatz - Angular Secure Config](https://stackblitz.com/edit/stackblitz-starters-an9a7h)
 
 ## Getting Started
 
@@ -36,7 +36,11 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
 2. **Install the package**
 
    ```sh
-   $ npm install thiqah-secure-config
+   $ npm install thiqah-angular-secure-config
+   ```
+
+   ```sh
+   $ yarn add thiqah-angular-secure-config
    ```
 
 3. **Run the package**
@@ -44,33 +48,48 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
 - Run package help:
 
   ```sh
-  $ thiqah-secure-config help
+  $ thiqah-angular-secure-config help
   ```
 
 - Run package and its dependancies via NPM:
   ```sh
-  $ thiqah-secure-config run
+  $ thiqah-angular-secure-config run
   ```
 - Run package and its dependancies via YARN:
   ```sh
-  $ thiqah-secure-config run --use-yarn
+  $ thiqah-angular-secure-config run --use-yarn
   ```
-  ![image-01](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
+- Run package and its dependancies with custom package:
+
+  ```sh
+  $ thiqah-angular-secure-config run --npmrc-src my-registry --npmrc-username my-username --npmrc-pat my-pat
+  ```
+
+  > **The custom registry URL:** https://SOURCE-CONTROL/ORGANIZATION-NAME/PROJECT-NAME/\_packaging/FEED/npm/registry/
+  >
+  > **my-registry:** SOURCE-CONTROL/ORGANIZATION-NAME/PROJECT-NAME/\_packaging/FEED
+  >
+  > **my-username:** Your feed username
+  >
+  > **my-pat:** Your organization Personal Access Token in Base64 format
+
+  ![image-01](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
+
 - Specify the name of the configuration file **(default: config.json)**:
 
   ```sh
-  $ thiqah-secure-config run --config-file-name custom-config.json
+  $ thiqah-angular-secure-config run --config-file-name custom-config.json
   ```
 
-  ![image-02](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
+  ![image-02](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
 
 - Specify the name of the configuration file (default: config.json):
 
   ```sh
-  $ thiqah-secure-config run --include-dockerfile --config-file-name custom-config.json
+  $ thiqah-angular-secure-config run --include-dockerfile --config-file-name custom-config.json
   ```
 
-  ![image-03](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
+  ![image-03](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
 
 4. **Update `config.json` and `AppConfig`**
 
@@ -114,7 +133,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
    import { BrowserModule } from "@angular/platform-browser";
    import { AppRoutingModule } from "./app-routing.module";
    import { AppComponent } from "./app.component";
-   import { ConfigService } from "thiqah-res";
+   import { ConfigService } from "thiqhah-resources";
    import { AppConfig } from "../shared/models/app-config";
    ```
 
@@ -151,7 +170,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
 
 ## Usage
 
-The `ConfigService` from the `thiqah-res` package provides a streamlined way to manage and access your application's configuration settings. Here’s a step-by-step guide on how to integrate and use the `ConfigService` in your Angular components.
+The `ConfigService` from the `thiqhah-resources` package provides a streamlined way to manage and access your application's configuration settings. Here’s a step-by-step guide on how to integrate and use the `ConfigService` in your Angular components.
 
 ## Example: Displaying Application Configuration Data
 
@@ -165,7 +184,7 @@ Begin by importing the necessary modules and services into your component.
 
 ```typescript
 import { Component } from "@angular/core";
-import { ConfigService } from "thiqah-res";
+import { ConfigService } from "thiqhah-resources";
 import { AppConfig, App } from "../shared/models/app-config";
 ```
 
@@ -235,7 +254,7 @@ $ node encrypt-config.js && ng serve -o
 $ npm start
 ```
 
-![image-04](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Angular-Secure-Config.png)
+![image-04](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Angular-Secure-Config.png)
 
 <hr>
 
@@ -249,7 +268,7 @@ $ npm start
      ```
      > After running the command above, your deployment files will be ready in the `dist` folder.
      >
-     > > Open `angular.json`, and navigate to **'architect.build.options.outputPath'**.
+     > Open `angular.json`, and navigate to **'architect.build.options.outputPath'**.
 
 2. **Docker**
    - Build the Dockerfile using docker engine:
