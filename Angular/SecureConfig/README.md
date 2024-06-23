@@ -55,14 +55,14 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   ```sh
   $ thiqah-secure-config run --use-yarn
   ```
-  ![image-01](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies.png)
+  ![image-01](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
   
 - Specify the name of the configuration file __(default: config.json)__:
   ```sh
   $ thiqah-secure-config run --config-file-name custom-config.json
   ```
   
-  ![image-02](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file.png)
+  ![image-02](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
   
 - Specify the name of the configuration file (default: config.json):
   ```sh
