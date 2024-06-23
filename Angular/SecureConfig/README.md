@@ -56,21 +56,22 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   $ thiqah-secure-config run --use-yarn
   ```
   ![image-01](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
-  
-- Specify the name of the configuration file __(default: config.json)__:
+- Specify the name of the configuration file **(default: config.json)**:
+
   ```sh
   $ thiqah-secure-config run --config-file-name custom-config.json
   ```
-  
+
   ![image-02](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
-  
+
 - Specify the name of the configuration file (default: config.json):
+
   ```sh
   $ thiqah-secure-config run --include-dockerfile --config-file-name custom-config.json
   ```
-  
+
   ![image-03](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
-  
+
 4. **Update `config.json` and `AppConfig`**
 
    ```json
@@ -96,24 +97,42 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
    }
    ```
 
-   > Note: Verify that changes to `config.json` have been incorporated into the `AppModule` model to ensure it is current.
+   > Note: Verify that the `config.json` changes were added to the `AppConfig` model to be up-to-date.
 
 5. **Update `app.module.ts`**
 
-   Inject the `APP_INITIALIZER` into `AppModule` providers.
+   You can ensure that configuration settings are loaded before the Angular application starts by using the `APP_INITIALIZER` token. This guide explains how to inject `APP_INITIALIZER` into your Angular module to initialize the configuration service.
 
-   ```ts
+   ## Step-by-Step Guide to Injecting APP_INITIALIZER
+
+   ### 1. Import Required Modules
+
+   Begin by importing the necessary modules and services into your `AppModule`.
+
+   ```typescript
    import { NgModule, APP_INITIALIZER } from "@angular/core";
    import { BrowserModule } from "@angular/platform-browser";
    import { AppRoutingModule } from "./app-routing.module";
    import { AppComponent } from "./app.component";
    import { ConfigService } from "thiqah-res";
    import { AppConfig } from "../shared/models/app-config";
+   ```
 
+   ### 2. Create Configuration Loader Function
+
+   Define a function that initializes the `ConfigService`. This function will be used by the `APP_INITIALIZER` to load configuration settings before the application starts.
+
+   ```typescript
    function appConfigLoader(ConfigService: ConfigService<AppConfig>) {
      return () => ConfigService.init();
    }
+   ```
 
+   ### 3. Configuring the `APP_INITIALIZER`
+
+   Configure the `APP_INITIALIZER` provider to use the `appConfigLoader` function into the `AppModule`. This ensures that the configuration settings are loaded and available when the application starts.
+
+   ```typescript
    @NgModule({
      declarations: [AppComponent],
      imports: [BrowserModule, AppRoutingModule],
@@ -132,11 +151,29 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
 
 ## Usage
 
-```ts
+The `ConfigService` from the `thiqah-res` package provides a streamlined way to manage and access your application's configuration settings. Here’s a step-by-step guide on how to integrate and use the `ConfigService` in your Angular components.
+
+## Example: Displaying Application Configuration Data
+
+The following example demonstrates how to use `ConfigService` within an Angular component to read and display application configuration data.
+
+## Step-by-Step Integration
+
+### 1. Import Required Modules
+
+Begin by importing the necessary modules and services into your component.
+
+```typescript
 import { Component } from "@angular/core";
 import { ConfigService } from "thiqah-res";
 import { AppConfig, App } from "../shared/models/app-config";
+```
 
+### 2. Define the Component
+
+Create your Angular component. In this example, we'll use `AppComponent` to display configuration data.
+
+```typescript
 @Component({
   selector: "app-root",
   template: `
@@ -159,6 +196,35 @@ export class AppComponent {
 }
 ```
 
+### 3. Reading Configuration
+
+The `ConfigService.readConfig` method is used to read the configuration data at runtime. This method fetches the configuration settings and assigns them to the `appConfig` property.
+
+```typescript
+this.appConfig = ConfigService.readConfig<AppConfig>();
+```
+
+### 4. Accessing Nested Configuration
+
+To access nested configuration properties, such as `app.baseUrl`, the `ConfigService.getOne` method is utilized. This ensures that even nested configuration properties are correctly retrieved and used within your component.
+
+```typescript
+this.appConfig.app = {
+  baseUrl: configService.getOne("app")?.baseUrl || "",
+} as App;
+```
+
+### 5. Displaying Configuration Data
+
+Finally, the configuration data is displayed in the component’s template using Angular’s data binding. This example shows how to display the application's title, version, and base URL.
+
+```html
+<h2>App Config Data</h2>
+<p><b>Title:</b> {{ appConfig?.title }}</p>
+<p><b>Version:</b> {{ appConfig?.version }}</p>
+<p><b>BaseUrl:</b> {{ appConfig?.app?.baseUrl }}</p>
+```
+
 ## Run the application
 
 ```sh
@@ -168,6 +234,7 @@ $ node encrypt-config.js && ng serve -o
 ```sh
 $ npm start
 ```
+
 ![image-04](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Angular-Secure-Config.png)
 
 <hr>
@@ -180,10 +247,10 @@ $ npm start
      ```sh
      $ ng build --configuration production && node obfuscate.js
      ```
-   > After running the command above, your deployment files will be ready in the `dist` folder.
-   
-   > Open `angular.json`, the navigate to __'architect.build.options.outputPath'__.
-   
+     > After running the command above, your deployment files will be ready in the `dist` folder.
+     >
+     > > Open `angular.json`, and navigate to **'architect.build.options.outputPath'**.
+
 2. **Docker**
    - Build the Dockerfile using docker engine:
      ```sh
