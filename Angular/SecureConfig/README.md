@@ -55,14 +55,23 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   ```sh
   $ thiqah-secure-config run --use-yarn
   ```
-- Specify the name of the configuration file (default: config.json):
+  ![image-01](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies.png)
+  
+- Specify the name of the configuration file __(default: config.json)__:
   ```sh
   $ thiqah-secure-config run --config-file-name custom-config.json
   ```
-
-4. **Create `AppConfig` model**
-
-   Create a new model that represents your `../assests/configuration/config.json` file.
+  
+  ![image-02](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file.png)
+  
+- Specify the name of the configuration file (default: config.json):
+  ```sh
+  $ thiqah-secure-config run --include-dockerfile --config-file-name custom-config.json
+  ```
+  
+  ![image-03](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
+  
+4. **Update `config.json` and `AppConfig`**
 
    ```json
    {
@@ -87,7 +96,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
    }
    ```
 
-   > Note: Ensure `config.json` changes were added to the `AppConfig` model to be up-to-date.
+   > Note: Verify that changes to `config.json` have been incorporated into the `AppModule` model to ensure it is current.
 
 5. **Update `app.module.ts`**
 
@@ -159,6 +168,9 @@ $ node encrypt-config.js && ng serve -o
 ```sh
 $ npm start
 ```
+![image-04](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Angular-Secure-Config.png)
+
+<hr>
 
 ## Deployment
 
@@ -166,22 +178,19 @@ $ npm start
 
    - Build the production version of your application:
      ```sh
-     $ ng build --prod
+     $ ng build --configuration production && node obfuscate.js
      ```
-   - Run the obfuscation script:
-     ```sh
-     $ node obfuscate.js
-     ```
-
+   > After running the command above, your deployment files will be ready in the `dist` folder.
+   
+   > Open `angular.json`, the navigate to __'architect.build.options.outputPath'__.
+   
 2. **Docker**
-   - Run the package with Docker support:
-     - For NPM:
-       ```sh
-       $ thiqah-secure-config run --include-dockerfile
-       ```
-     - For YARN:
-       ```sh
-       $ thiqah-secure-config run --use-yarn --include-dockerfile
-       ```
+   - Build the Dockerfile using docker engine:
+     ```sh
+     $ docker build -f "Dockerfile" -t angular-app:1.0 .
+     ```
+     ```sh
+     $ docker run -d -p 4100:8080 angular-app:1.0
+     ```
 
 By following this guide, you can ensure your Angular application configuration is securely managed, preventing unauthorized access and enhancing the overall security of your application.
