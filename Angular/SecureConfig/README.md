@@ -73,7 +73,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   >
   > **my-pat:** Your organization Personal Access Token in Base64 format
 
-  ![image-01](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
+  ![image-01](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
 
 - Specify the name of the configuration file **(default: config.json)**:
 
@@ -81,7 +81,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   $ thiqah-angular-secure-config run --config-file-name custom-config.json
   ```
 
-  ![image-02](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
+  ![image-02](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
 
 - Specify the name of the configuration file (default: config.json):
 
@@ -89,7 +89,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   $ thiqah-angular-secure-config run --include-dockerfile --config-file-name custom-config.json
   ```
 
-  ![image-03](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
+  ![image-03](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
 
 4. **Update `config.json` and `AppConfig`**
 
@@ -254,7 +254,7 @@ $ node encrypt-config.js && ng serve -o
 $ npm start
 ```
 
-![image-04](https://raw.githubusercontent.com/ahmedkhaled119/aki_resources/main/npm/Angular/SecureConfig/images/Angular-Secure-Config.png)
+![image-04](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Angular-Secure-Config.png)
 
 <hr>
 
