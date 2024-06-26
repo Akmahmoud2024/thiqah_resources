@@ -2,7 +2,7 @@
 
 ## Overview
 
-`thiqah-angular-secure-config` is a new npm package developed to address a security vulnerability in Angular applications. This package ensures that sensitive configuration data in `config.json` is protected from being inspected or extracted via browser network tools or debugging features.
+The `@thiqah/angular-secure-cli` is a new npm package developed to address a security vulnerability in Angular applications. This package ensures that sensitive configuration data in `config.json` is protected from being inspected or extracted via browser network tools or debugging features.
 
 ## Problem Statement
 
@@ -10,7 +10,7 @@ Many developers switch from `environment.ts` to `config.json` for application co
 
 ## Solution
 
-`thiqah-angular-secure-config` resolves this issue by encrypting the `config.json` file before the application starts. Upon startup, the application decrypts the file in `main.ts` and stores the data in a static variable, ensuring the configuration remains secure.
+The `@thiqah/angular-secure-cli` resolves this issue by encrypting the `config.json` file before the application starts. Upon startup, the application decrypts the file in `main.ts` and stores the data in a static variable, ensuring the configuration remains secure.
 
 ## Features
 
@@ -20,10 +20,6 @@ Many developers switch from `environment.ts` to `config.json` for application co
 - **Obfuscation:** Adds a layer of security by obfuscating the application source.
 - **Integration with Vault:** Utilizes Vault for securely managing sensitive data.
 - **Config-Map Compatibility:** Works with Kubernetes ConfigMaps to replace actual values from Vault before encryption.
-
-## Demo
-
-You can find a complete implementation at [Stackblatz - Angular Secure Config](https://stackblitz.com/edit/stackblitz-starters-an9a7h)
 
 ## Getting Started
 
@@ -36,11 +32,11 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
 2. **Install the package**
 
    ```sh
-   $ npm install thiqah-angular-secure-config
+   $ npm install @thiqah/angular-secure-cli
    ```
 
    ```sh
-   $ yarn add thiqah-angular-secure-config
+   $ yarn add @thiqah/angular-secure-cli
    ```
 
 3. **Run the package**
@@ -60,20 +56,19 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   $ thiqah-angular-secure-config run --use-yarn
   ```
 - Run package and its dependancies with custom package:
-
   ```sh
   $ thiqah-angular-secure-config run --npmrc-src my-registry --npmrc-username my-username --npmrc-pat my-pat
   ```
 
-  > **The custom registry URL:** https://SOURCE-CONTROL/ORGANIZATION-NAME/PROJECT-NAME/\_packaging/FEED/npm/registry/
+  > **The custom registry URL:** https://SOURCE-CONTROL/ORGANIZATION-NAME/PROJECT-NAME/_packaging/FEED/npm/registry/
   >
-  > **my-registry:** SOURCE-CONTROL/ORGANIZATION-NAME/PROJECT-NAME/\_packaging/FEED
+  > **my-registry:** SOURCE-CONTROL/ORGANIZATION-NAME/PROJECT-NAME/_packaging/FEED
   >
   > **my-username:** Your feed username
   >
   > **my-pat:** Your organization Personal Access Token in Base64 format
 
-  ![image-01](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
+  ![Run package and its dependencies.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Run%20package%20and%20its%20dependencies-0661829c-e17a-40d3-8c64-eb8a8e8afdf4.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
 
 - Specify the name of the configuration file **(default: config.json)**:
 
@@ -81,7 +76,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   $ thiqah-angular-secure-config run --config-file-name custom-config.json
   ```
 
-  ![image-02](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
+  ![Specify the name of the configuration file.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Specify%20the%20name%20of%20the%20configuration%20file-79813edb-2280-42a2-8680-c4cf4bb5f1dc.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
 
 - Specify the name of the configuration file (default: config.json):
 
@@ -89,7 +84,11 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
   $ thiqah-angular-secure-config run --include-dockerfile --config-file-name custom-config.json
   ```
 
-  ![image-03](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
+  ![Run package and include docker dependencies.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Run%20package%20and%20include%20docker%20dependencies-88259418-80f4-4112-abd7-102a3ac27bab.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
+
+***
+
+## Configuration
 
 4. **Update `config.json` and `AppConfig`**
 
@@ -133,17 +132,17 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
    import { BrowserModule } from "@angular/platform-browser";
    import { AppRoutingModule } from "./app-routing.module";
    import { AppComponent } from "./app.component";
-   import { ConfigService } from "thiqhah-resources";
+   import { EnvironmentConfigService } from "@thiqah/shared-lib";
    import { AppConfig } from "../shared/models/app-config";
    ```
 
    ### 2. Create Configuration Loader Function
 
-   Define a function that initializes the `ConfigService`. This function will be used by the `APP_INITIALIZER` to load configuration settings before the application starts.
+   Define a function that initializes the `EnvironmentConfigService`. This function will be used by the `APP_INITIALIZER` to load the encrypted configuration settings before the application starts.
 
    ```typescript
-   function appConfigLoader(ConfigService: ConfigService<AppConfig>) {
-     return () => ConfigService.init();
+   function appConfigLoader(configService: EnvironmentConfigService) {
+     return () => configService.load(true);
    }
    ```
 
@@ -159,7 +158,7 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
        {
          provide: APP_INITIALIZER,
          multi: true,
-         deps: [ConfigService],
+         deps: [EnvironmentConfigService],
          useFactory: appConfigLoader,
        },
      ],
@@ -167,14 +166,16 @@ You can find a complete implementation at [Stackblatz - Angular Secure Config](h
    })
    export class AppModule {}
    ```
+ 
+ ***
 
 ## Usage
 
-The `ConfigService` from the `thiqhah-resources` package provides a streamlined way to manage and access your application's configuration settings. Here’s a step-by-step guide on how to integrate and use the `ConfigService` in your Angular components.
+The `EnvironmentConfigService` from the `@thiqah/shared-lib` package provides a streamlined way to manage and access your application's configuration settings. Here’s a step-by-step guide on how to integrate and use the `EnvironmentConfigService` in your Angular components.
 
 ## Example: Displaying Application Configuration Data
 
-The following example demonstrates how to use `ConfigService` within an Angular component to read and display application configuration data.
+The following example demonstrates how to use `EnvironmentConfigService` within an Angular component to read and display application configuration data.
 
 ## Step-by-Step Integration
 
@@ -184,7 +185,7 @@ Begin by importing the necessary modules and services into your component.
 
 ```typescript
 import { Component } from "@angular/core";
-import { ConfigService } from "thiqhah-resources";
+import { EnvironmentConfigService } from "@thiqah/shared-lib";
 import { AppConfig, App } from "../shared/models/app-config";
 ```
 
@@ -206,8 +207,8 @@ export class AppComponent {
   public appConfig: AppConfig | null = null;
   public appBaseUrl: string = "";
 
-  constructor(private configService: ConfigService<AppConfig>) {
-    this.appConfig = ConfigService.readConfig<AppConfig>();
+  constructor(private configService: EnvironmentConfigService) {
+    this.appConfig = EnvironmentConfigService.getAll(true);
     this.appConfig.app = {
       baseUrl: configService.getOne("app")?.baseUrl || "",
     } as App;
@@ -217,10 +218,10 @@ export class AppComponent {
 
 ### 3. Reading Configuration
 
-The `ConfigService.readConfig` method is used to read the configuration data at runtime. This method fetches the configuration settings and assigns them to the `appConfig` property.
+The `EnvironmentConfigService.getAll(true)` method is used to read the engypted configuration data at runtime. This method fetches the configuration settings and assigns them to the `appConfig` property.
 
 ```typescript
-this.appConfig = ConfigService.readConfig<AppConfig>();
+this.appConfig = EnvironmentConfigService.getAll(true);
 ```
 
 ### 4. Accessing Nested Configuration
@@ -254,9 +255,9 @@ $ node encrypt-config.js && ng serve -o
 $ npm start
 ```
 
-![image-04](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Angular-Secure-Config.png)
+![Angular-Secure-Config.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Angular-Secure-Config-01ff4fcf-172a-4b5f-870e-15926dcb0133.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
 
-<hr>
+***
 
 ## Deployment
 
