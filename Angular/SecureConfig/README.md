@@ -68,7 +68,7 @@ The `@thiqah/angular-secure-cli` resolves this issue by encrypting the `config.j
   >
   > **my-pat:** Your organization Personal Access Token in Base64 format
 
-  ![Run package and its dependencies.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Run%20package%20and%20its%20dependencies-0661829c-e17a-40d3-8c64-eb8a8e8afdf4.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
+  ![Run package and its dependencies.png](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20its%20dependencies-01.png)
 
 - Specify the name of the configuration file **(default: config.json)**:
 
@@ -76,7 +76,7 @@ The `@thiqah/angular-secure-cli` resolves this issue by encrypting the `config.j
   $ thiqah-angular-secure-config run --config-file-name custom-config.json
   ```
 
-  ![Specify the name of the configuration file.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Specify%20the%20name%20of%20the%20configuration%20file-79813edb-2280-42a2-8680-c4cf4bb5f1dc.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
+  ![Specify the name of the configuration file.png](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Specify%20the%20name%20of%20the%20configuration%20file-01.png)
 
 - Specify the name of the configuration file (default: config.json):
 
@@ -84,7 +84,7 @@ The `@thiqah/angular-secure-cli` resolves this issue by encrypting the `config.j
   $ thiqah-angular-secure-config run --include-dockerfile --config-file-name custom-config.json
   ```
 
-  ![Run package and include docker dependencies.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Run%20package%20and%20include%20docker%20dependencies-88259418-80f4-4112-abd7-102a3ac27bab.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
+  ![Run package and include docker dependencies.png](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Run%20package%20and%20include%20docker%20dependencies.png)
 
 ***
 
@@ -255,7 +255,7 @@ $ node encrypt-config.js && ng serve -o
 $ npm start
 ```
 
-![Angular-Secure-Config.png](https://dev.azure.com/ThiqahDev/847641f3-8ff3-46e2-a54c-8a5da613751d/_apis/git/repositories/9ea20150-f92e-4c45-9bfc-a28861c0a264/items?path=/.attachments/Angular-Secure-Config-01ff4fcf-172a-4b5f-870e-15926dcb0133.png&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
+![Angular-Secure-Config.png](https://raw.githubusercontent.com/Akmahmoud2024/thiqah_resources/main/Angular/SecureConfig/images/Angular-Secure-Config.png)
 
 ***
 
