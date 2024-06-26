@@ -1,12 +1,12 @@
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { AppModule } from "./app/app.module";
 import { enableProdMode } from "@angular/core";
-import { ConfigService } from "thiqah-res";
+import { EnvironmentConfigService } from "@thiqah/shared-lib";
 import { AppConfig } from "./shared/models/app-config";
 
-const envConfigService = new ConfigService<AppConfig>();
+const envConfigService = new EnvironmentConfigService();
 
-envConfigService.init().then(() => {
+envConfigService.load(true).then(() => {
   if (envConfigService.getOne("production")) {
     enableProdMode();
   }
